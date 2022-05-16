@@ -4,6 +4,7 @@ import Form from './components/Form/Form';
 import Table from './components/Table/Table';
 import Sum from './components/Sum/Sum';
 import styled from 'styled-components';
+import LargestAmount from './components/LargestAmount/LargestAmount';
 
 const Wrapper = styled.div`
   min-width: 80rem;
@@ -19,6 +20,7 @@ function App() {
       <Form />
       <Table />
       <Sum />
+      <LargestAmount />
     </Wrapper>
   );
 }
