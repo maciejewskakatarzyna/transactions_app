@@ -9,8 +9,6 @@ export const Wrapper = styled.div`
 `;
 
 export const AmountDetails = styled.div`
-  display: flex;
-
   p {
     font-weight: normal;
   }
