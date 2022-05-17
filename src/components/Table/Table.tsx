@@ -1,14 +1,12 @@
 import React from 'react';
 import TableRow from '../TableRow/TableRow';
 import { Info, StyledTable } from './Table.styles';
-
-const transactions = [
-  { id: 1, title: 'first', amount: 10 },
-  { id: 2, title: 'second', amount: 22 },
-  { id: 3, title: 'third', amount: 45 },
-];
+import { useSelector } from 'react-redux';
+import { State, Transaction } from '../../store';
 
 const Table = () => {
+  const transactions = useSelector((state: State) => state.transactions);
+
   return transactions.length ? (
     <StyledTable>
       <thead>
@@ -20,7 +18,7 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {transactions.map(({ id, title, amount }) => (
+        {transactions.map(({ id, title, amount }: Transaction) => (
           <TableRow id={id} title={title} amount={amount} key={id} />
         ))}
       </tbody>

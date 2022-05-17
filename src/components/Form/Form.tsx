@@ -2,17 +2,21 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import FormField from './FormField';
 import { Error, StyledButton, StyledForm, Wrapper } from './Form.styles';
+import { useDispatch } from 'react-redux';
+import { addTransaction, Transaction } from '../../store';
 
 const Form = () => {
-  const handleAddTransaction = (data: Object) => {
-    console.log(data);
+  const dispatch = useDispatch();
+
+  const handleAddTransaction = (data: Transaction) => {
+    dispatch(addTransaction(data));
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<Transaction>();
 
   return (
     <StyledForm onSubmit={handleSubmit(handleAddTransaction)}>

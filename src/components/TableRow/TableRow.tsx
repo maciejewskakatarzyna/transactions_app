@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyledRow } from './TableRow.styles';
+import { useDispatch } from 'react-redux';
+import { removeTransaction, Transaction } from '../../store';
 
-const TableRow = ({ title, amount, id }: { title: string; amount: number; id: number }) => {
+const TableRow = ({ title, amount, id }: Transaction) => {
+  const dispatch = useDispatch();
+
   const handleRemoveTransaction = () => {
-    console.log('delete');
+    dispatch(removeTransaction({ id: id }));
   };
 
   return (
