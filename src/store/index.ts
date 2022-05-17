@@ -16,7 +16,7 @@ const transactionsSlice = createSlice({
     addTransaction(state, action) {
       state.push({
         ...action.payload,
-        id: parseInt(faker.datatype.uuid()),
+        id: faker.datatype.uuid(),
       });
     },
     removeTransaction(state, action) {

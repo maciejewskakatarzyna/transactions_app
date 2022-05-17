@@ -4,12 +4,15 @@ import FormField from './FormField';
 import { Error, StyledButton, StyledForm, Wrapper } from './Form.styles';
 import { useDispatch } from 'react-redux';
 import { addTransaction, Transaction } from '../../store';
+import { useSumContext } from '../../providers/SumProvider';
 
 const Form = () => {
   const dispatch = useDispatch();
+  const { getSum } = useSumContext();
 
   const handleAddTransaction = (data: Transaction) => {
     dispatch(addTransaction(data));
+    getSum(data);
   };
 
   const {

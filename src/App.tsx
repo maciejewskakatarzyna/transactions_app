@@ -5,8 +5,6 @@ import Table from './components/Table/Table';
 import Sum from './components/Sum/Sum';
 import styled from 'styled-components';
 import LargestAmount from './components/LargestAmount/LargestAmount';
-import { Provider } from 'react-redux';
-import { store } from './store';
 
 const Wrapper = styled.div`
   min-width: 80rem;
@@ -17,15 +15,13 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <Provider store={store}>
-      <Wrapper>
-        <Header />
-        <Form />
-        <Table />
-        <Sum />
-        <LargestAmount />
-      </Wrapper>
-    </Provider>
+    <Wrapper>
+      <Header />
+      <Form />
+      <Table />
+      <Sum />
+      <LargestAmount />
+    </Wrapper>
   );
 }
 
