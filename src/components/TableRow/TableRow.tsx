@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyledRow } from './TableRow.styles';
 import { useDispatch } from 'react-redux';
 import { removeTransaction, Transaction } from '../../store';
 import { EURtoPLN } from '../../helpers/eurToPln';
 import { useSumContext } from '../../providers/SumProvider';
+import { useConversionRateContext } from '../../providers/ConversionRateProvider';
 
 const TableRow = ({ title, amount, id }: Transaction) => {
   const dispatch = useDispatch();
   const { getSumAfterDelete } = useSumContext();
+  const { conversionRate } = useConversionRateContext();
 
   const handleRemoveTransaction = () => {
     dispatch(removeTransaction({ id }));
     getSumAfterDelete(id);
   };
-
-  const conversionRate = 0.25;
 
   const PLNamount = EURtoPLN(amount, conversionRate);
 

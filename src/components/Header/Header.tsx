@@ -1,7 +1,10 @@
 import React from 'react';
 import { Title, Wrapper } from './Header.styles';
+import { useConversionRateContext } from '../../providers/ConversionRateProvider';
 
 const Header = () => {
+  const { conversionRate } = useConversionRateContext();
+
   return (
     <Wrapper>
       <Title>List of transactions</Title>
@@ -9,7 +12,7 @@ const Header = () => {
         {' '}
         <p>1 PLN = </p>
         <input
-          defaultValue='0.25'
+          defaultValue={conversionRate}
           type='number'
           step='0.001'
           min='0.001'

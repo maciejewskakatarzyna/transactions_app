@@ -3,8 +3,11 @@ import { AmountDetails, Wrapper } from './LargestAmount.styles';
 import { useSelector } from 'react-redux';
 import { State, Transaction } from '../../store';
 import { EURtoPLN } from '../../helpers/eurToPln';
+import { useConversionRateContext } from '../../providers/ConversionRateProvider';
 
 const LargestAmount = () => {
+  const { conversionRate } = useConversionRateContext();
+
   const transactions = useSelector((state: State) => state.transactions);
 
   const max = Math.max(
@@ -20,8 +23,8 @@ const LargestAmount = () => {
       <p>Largest amount transaction:&nbsp;</p>
       <AmountDetails>
         <p>
-          {transactions[i].title} | {transactions[i].amount} EUR | (
-          {EURtoPLN(transactions[i].amount, 0.25)} PLN)
+          {transactions[i].title} | {transactions[i].amount} EUR |&nbsp;
+          {EURtoPLN(transactions[i].amount, conversionRate)} PLN
         </p>
       </AmountDetails>
     </Wrapper>
