@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
@@ -12,11 +12,12 @@ export const Wrapper = styled.div`
   }
 
   div {
+    width: 30rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
   }
+
   input {
     width: 7rem;
     border: none;
@@ -26,4 +27,11 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h1`
   font-weight: normal;
+  margin-bottom: 2rem;
+`;
+
+export const CurrencyWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 `;

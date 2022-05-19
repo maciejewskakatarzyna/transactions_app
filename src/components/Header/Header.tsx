@@ -1,6 +1,7 @@
 import React from 'react';
-import { Title, Wrapper } from './Header.styles';
+import { CurrencyWrapper, Title, Wrapper } from './Header.styles';
 import { useConversionRateContext } from '../../providers/ConversionRateProvider';
+import Button from '../Button/Button';
 
 const Header = () => {
   const { conversionRate, handleSetConversionRate, getConversionRate } = useConversionRateContext();
@@ -13,17 +14,19 @@ const Header = () => {
     <Wrapper>
       <Title>List of transactions</Title>
       <div>
-        <p>1 PLN = </p>
-        <input
-          value={conversionRate}
-          type='number'
-          step='0.001'
-          min='0.001'
-          data-testid='conversionRateInput'
-          onChange={e => handleSetConversionRate(parseFloat(e.target.value))}
-        />
-        <p>EUR</p>
-        <button onClick={handleResetConversionRate}>reset</button>
+        <CurrencyWrapper>
+          <p>1 PLN = </p>
+          <input
+            value={conversionRate}
+            type='number'
+            step='0.001'
+            min='0.001'
+            data-testid='conversionRateInput'
+            onChange={e => handleSetConversionRate(parseFloat(e.target.value))}
+          />
+          <p>EUR</p>
+        </CurrencyWrapper>
+        <Button onClick={handleResetConversionRate}>Reset</Button>
       </div>
     </Wrapper>
   );
