@@ -1,5 +1,5 @@
 import React from 'react';
-import { AmountDetails, Wrapper } from './LargestAmount.styles';
+import { AmountDetails, Wrapper, Title } from './LargestAmount.styles';
 import { useSelector } from 'react-redux';
 import { State, Transaction } from '../../store';
 import { EURtoPLN } from '../../helpers/eurToPln';
@@ -18,17 +18,22 @@ const LargestAmount = () => {
 
   const i = transactions.findIndex(x => x.amount == max);
 
-  return transactions.length ? (
+  return (
     <Wrapper>
-      <p>Largest amount transaction:&nbsp;</p>
+      <Title>Largest amount transaction:&nbsp;</Title>
       <AmountDetails>
-        <p>
-          {transactions[i].title} | {transactions[i].amount} EUR |&nbsp;
-          {EURtoPLN(transactions[i].amount, conversionRate)} PLN
-        </p>
+        {transactions.length ? (
+          <>
+            <p>Title: {transactions[i].title}</p>
+            <p>Amount (EUR): {transactions[i].amount} EUR</p>
+            <p>Amount (PLN): {EURtoPLN(transactions[i].amount, conversionRate)} PLN</p>
+          </>
+        ) : (
+          <p>No transactions added</p>
+        )}
       </AmountDetails>
     </Wrapper>
-  ) : null;
+  );
 };
 
 export default LargestAmount;

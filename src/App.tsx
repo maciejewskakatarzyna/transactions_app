@@ -13,14 +13,23 @@ const Wrapper = styled.div`
   padding: 5rem;
 `;
 
+const TopWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
 function App() {
   return (
     <Wrapper>
-      <Header />
-      <Form />
+      <TopWrapper>
+        <div>
+          <Header />
+          <Form />
+        </div>
+        <LargestAmount />
+      </TopWrapper>
       <Table />
       <Sum />
-      <LargestAmount />
     </Wrapper>
   );
 }

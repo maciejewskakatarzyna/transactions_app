@@ -1,15 +1,25 @@
 import styled from 'styled-components';
 export const Wrapper = styled.div`
-  margin-top: 2rem;
+  width: 35rem;
+  height: 50%;
+  margin-top: 6.2rem;
   display: flex;
+  flex-direction: column;
+  border: solid 1px ${({ theme }) => theme.color.formBar};
+  background: ${({ theme }) => theme.color.formBar};
+  padding: 1.5rem 2rem;
+`;
 
-  p {
-    font-weight: bold;
-  }
+export const Title = styled.p`
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.font.size.l};
+  margin-bottom: 2rem;
 `;
 
 export const AmountDetails = styled.div`
   p {
     font-weight: normal;
+    font-size: ${({ theme }) => theme.font.size.m};
+    margin-bottom: 1rem;
   }
 `;
