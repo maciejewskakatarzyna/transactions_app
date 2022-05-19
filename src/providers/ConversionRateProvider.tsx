@@ -1,17 +1,37 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface IConversionRateContext {
   conversionRate: number;
-  handleSetConversionRate: (rate: string) => void;
+  handleSetConversionRate: (rate: number) => void;
+  getConversionRate: () => void;
 }
 
 export const ConversionRateContext = React.createContext<IConversionRateContext | null>(null);
 
 export const ConversionRateProvider = ({ children }: { children: ReactNode }) => {
-  const [conversionRate, setConversionRate] = useState<number>(0.25);
+  const [conversionRate, setConversionRate] = useState<number>(0);
 
-  const handleSetConversionRate = (rate: string) => {
-    setConversionRate(parseInt(rate));
+  const getConversionRate = () => {
+    axios
+      .get(`https://api.nbp.pl/api/exchangerates/rates/a/eur`)
+      .then(response => {
+        const res = response.data;
+        const EurRate = res.rates[0].mid;
+        const conRate = parseFloat((1 / EurRate).toFixed(3));
+        setConversionRate(conRate);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getConversionRate();
+  }, []);
+
+  const handleSetConversionRate = (rate: number) => {
+    setConversionRate(rate);
   };
 
   return (
@@ -19,6 +39,7 @@ export const ConversionRateProvider = ({ children }: { children: ReactNode }) =>
       value={{
         conversionRate,
         handleSetConversionRate,
+        getConversionRate,
       }}
     >
       {children}

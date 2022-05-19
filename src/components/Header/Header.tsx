@@ -3,23 +3,27 @@ import { Title, Wrapper } from './Header.styles';
 import { useConversionRateContext } from '../../providers/ConversionRateProvider';
 
 const Header = () => {
-  const { conversionRate } = useConversionRateContext();
+  const { conversionRate, handleSetConversionRate, getConversionRate } = useConversionRateContext();
+
+  const handleResetConversionRate = () => {
+    getConversionRate();
+  };
 
   return (
     <Wrapper>
       <Title>List of transactions</Title>
       <div>
-        {' '}
         <p>1 PLN = </p>
         <input
-          defaultValue={conversionRate}
+          value={conversionRate}
           type='number'
           step='0.001'
           min='0.001'
           data-testid='conversionRateInput'
-          onChange={() => console.log('change')}
-        />{' '}
+          onChange={e => handleSetConversionRate(parseFloat(e.target.value))}
+        />
         <p>EUR</p>
+        <button onClick={handleResetConversionRate}>reset</button>
       </div>
     </Wrapper>
   );
