@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   margin-top: 6.2rem;
   display: flex;
   flex-direction: column;
-  border: solid 1px ${({ theme }) => theme.color.formBar};
-  background: ${({ theme }) => theme.color.formBar};
+  background: ${({ theme }) => theme.color.darkBeige};
+  border-radius: 0.3rem;
   padding: 1.5rem 2rem;
 `;
 

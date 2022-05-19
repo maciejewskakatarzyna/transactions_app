@@ -4,11 +4,11 @@ export const theme = {
     black: '#000000',
     red: '#ff0000',
     beige: '#f9f7f4',
-    darkBrown: '#2c2726',
-    lightBrown: '#817f75',
+    darkBrown: '#433633',
+    darkBeige: '#F2EBE3',
     lightGrey: '#ccc',
     formBar: '#dcd6cc',
-    grey: '#7d7d7d',
+    middleBrown: '#E5D7C7',
   },
   font: {
     size: {
