@@ -1,29 +1,33 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import FormField from './FormField';
-import { Error, StyledButton, StyledForm, Wrapper } from './Form.styles';
+import { StyledForm, Wrapper } from './Form.styles';
+import { Error } from './FormField.styles';
 import { useDispatch } from 'react-redux';
 import { addTransaction, Transaction } from '../../store';
 import { useSumContext } from '../../providers/SumProvider';
+import Button from '../Button/Button';
 
 const Form = () => {
   const dispatch = useDispatch();
   const { getSum } = useSumContext();
 
-  const handleAddTransaction = (data: Transaction) => {
-    dispatch(addTransaction(data));
-    getSum(data);
-  };
-
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Transaction>();
 
+  const handleAddTransaction = (data: Transaction) => {
+    dispatch(addTransaction(data));
+    getSum(data);
+    reset();
+  };
+
   return (
-    <StyledForm onSubmit={handleSubmit(handleAddTransaction)}>
-      <Wrapper>
+    <Wrapper>
+      <StyledForm onSubmit={handleSubmit(handleAddTransaction)}>
         <FormField
           label='Title of transaction'
           id='title'
@@ -42,7 +46,7 @@ const Form = () => {
             {errors.title.type === 'required' && <Error>{errors.title.message}</Error>}
             {errors.title.type === 'minLength' && <Error>{errors.title.message}</Error>}
           </>
-        ) : null}
+        ) : null}{' '}
         <FormField
           label='Amount (in EUR)'
           id='amount'
@@ -53,10 +57,10 @@ const Form = () => {
             required: 'Amount is required',
           })}
           name='amount'
-        />
-      </Wrapper>
-      <StyledButton type='submit'>Add</StyledButton>
-    </StyledForm>
+        />{' '}
+        <Button type='submit'>Add</Button>
+      </StyledForm>
+    </Wrapper>
   );
 };
 

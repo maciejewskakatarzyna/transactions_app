@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.8rem;
     font-family: 'Arial', sans-serif;
-    background-color: white;
-    color: black;
+    background-color: ${({ theme }) => theme.color.beige};
+    color: ${({ theme }) => theme.color.darkBrown};;
     display: grid;
     place-items: center;
     margin: 10rem auto;

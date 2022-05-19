@@ -1,5 +1,5 @@
-import React from 'react';
-import { Wrapper } from './FormField.styles';
+import React, { ForwardedRef } from 'react';
+import { FormItem, Input, Label, FormItemBar } from './FormField.styles';
 
 interface FormFieldProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -25,12 +25,11 @@ const FormField = React.forwardRef(
       type = 'text',
       ...props
     }: FormFieldProps,
-    ref: React.LegacyRef<HTMLInputElement>
+    ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
-      <Wrapper>
-        <label htmlFor={id}>{label} </label>
-        <input
+      <FormItem>
+        <Input
           name={name}
           id={id}
           type={type}
@@ -41,7 +40,9 @@ const FormField = React.forwardRef(
           {...props}
           ref={ref}
         />
-      </Wrapper>
+        <Label htmlFor={id}>{label} </Label>
+        <FormItemBar />
+      </FormItem>
     );
   }
 );

@@ -4,16 +4,20 @@ import { SumProvider } from './SumProvider';
 import { Provider } from 'react-redux';
 import { store } from '../store';
 import { ConversionRateProvider } from './ConversionRateProvider';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../assets/styles/theme';
 
 const AppProviders = ({ children }: { children: ReactNode }) => {
   return (
     <Provider store={store}>
-      <ConversionRateProvider>
-        <SumProvider>
-          <GlobalStyle />
-          {children}
-        </SumProvider>
-      </ConversionRateProvider>
+      <ThemeProvider theme={theme}>
+        <ConversionRateProvider>
+          <SumProvider>
+            <GlobalStyle />
+            {children}
+          </SumProvider>
+        </ConversionRateProvider>
+      </ThemeProvider>
     </Provider>
   );
 };
