@@ -15,7 +15,7 @@ const Header = () => {
       <Title>List of transactions</Title>
       <div>
         <CurrencyWrapper>
-          <p>1 PLN = </p>
+          <p>1 EUR = </p>
           <input
             value={conversionRate}
             type='number'
@@ -24,7 +24,7 @@ const Header = () => {
             data-testid='conversionRateInput'
             onChange={e => handleSetConversionRate(parseFloat(e.target.value))}
           />
-          <p>EUR</p>
+          <p>PLN</p>
         </CurrencyWrapper>
         <Button onClick={handleResetConversionRate}>Reset</Button>
       </div>

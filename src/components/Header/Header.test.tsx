@@ -20,8 +20,8 @@ describe('Header', () => {
     );
 
     screen.getByText(/List of transactions/i);
-    screen.getByText(/1 PLN/i);
-    screen.getByText(/EUR/i);
+    screen.getByText(/1 EUR/i);
+    screen.getByText(/PLN/i);
     const input = screen.getByTestId('conversionRateInput');
     expect(input).toHaveValue(conversionRate);
   });

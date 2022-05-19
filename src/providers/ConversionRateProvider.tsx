@@ -18,7 +18,7 @@ export const ConversionRateProvider = ({ children }: { children: ReactNode }) =>
       .then(response => {
         const res = response.data;
         const EurRate = res.rates[0].mid;
-        const conRate = parseFloat((1 / EurRate).toFixed(3));
+        const conRate = parseFloat(EurRate.toFixed(3));
         setConversionRate(conRate);
       })
       .catch(error => {
