@@ -2,7 +2,7 @@ import React from 'react';
 import { Wrapper } from './FormField.styles';
 
 interface FormFieldProps {
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   value?: string | number;
   label: string;
   name: string;
