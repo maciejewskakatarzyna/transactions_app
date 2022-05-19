@@ -20,7 +20,7 @@ const LargestAmount = () => {
 
   return (
     <Wrapper>
-      <Title>Largest amount transaction:&nbsp;</Title>
+      <Title>The largest amount transaction:</Title>
       <AmountDetails>
         {transactions.length ? (
           <>

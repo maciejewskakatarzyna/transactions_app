@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledRow = styled.tr`
-  height: 3.5rem;
-
   &:nth-child(even) {
     background: ${({ theme }) => theme.color.darkBeige};
   }

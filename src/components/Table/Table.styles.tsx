@@ -7,9 +7,18 @@ export const StyledTable = styled.table`
   table-layout: fixed;
   border-collapse: collapse;
 
+  ${({ theme }) => theme.mq.desktop} {
+    min-width: 70rem;
+    font-size: ${({ theme }) => theme.font.size.m};
+  }
+
+  ${({ theme }) => theme.mq.tablet} {
+    min-width: 35rem;
+    font-size: ${({ theme }) => theme.font.size.s};
+  }
+
   thead {
     background: ${({ theme }) => theme.color.middleBrown};
-    height: 3.5rem;
 
     th {
       padding: 1rem;

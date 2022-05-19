@@ -19,4 +19,8 @@ export const theme = {
       xs: '1.2rem',
     },
   },
+  mq: {
+    tablet: '@media (max-width: 768px)',
+    desktop: '@media (max-width: 2048px)',
+  },
 };
