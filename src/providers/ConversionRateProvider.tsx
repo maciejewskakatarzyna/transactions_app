@@ -7,10 +7,12 @@ interface IConversionRateContext {
   getConversionRate: () => void;
 }
 
+const initialConvRate = 4.5;
+
 export const ConversionRateContext = React.createContext<IConversionRateContext | null>(null);
 
 export const ConversionRateProvider = ({ children }: { children: ReactNode }) => {
-  const [conversionRate, setConversionRate] = useState<number>(0);
+  const [conversionRate, setConversionRate] = useState<number>(initialConvRate);
 
   const getConversionRate = () => {
     axios
@@ -23,6 +25,7 @@ export const ConversionRateProvider = ({ children }: { children: ReactNode }) =>
       })
       .catch(error => {
         console.log(error);
+        setConversionRate(initialConvRate);
       });
   };
 
