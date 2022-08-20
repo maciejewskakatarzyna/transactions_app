@@ -10,9 +10,11 @@ const Header = () => {
     getConversionRate();
   };
 
+  const minValue = 0.001;
+
   const setInputValue = (e: React.FormEvent<HTMLInputElement>) => {
-    if (parseFloat(e.currentTarget.value) < 0.001 || e.currentTarget.value == null) {
-      handleSetConversionRate(0.001);
+    if (parseFloat(e.currentTarget.value) < minValue || e.currentTarget.value === '') {
+      handleSetConversionRate(minValue);
     } else handleSetConversionRate(parseFloat(e.currentTarget.value));
   };
 
@@ -25,7 +27,7 @@ const Header = () => {
           <input
             value={conversionRate}
             type='number'
-            min='0.001'
+            min={minValue}
             step='0.001'
             data-testid='conversionRateInput'
             onChange={setInputValue}
