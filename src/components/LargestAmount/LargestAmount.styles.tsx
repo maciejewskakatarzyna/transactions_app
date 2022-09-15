@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 export const Wrapper = styled.div`
-  width: 35rem;
-  height: 15.5rem;
+  width: 37rem;
+  max-height: 16rem;
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.color.darkBeige};
   border-radius: 0.3rem;
   padding: 1.5rem 2rem;
   margin-top: 6.2rem;
+  overflow-y: scroll;
+  box-sizing: content-box;
 `;
 
 export const Title = styled.p`
@@ -35,5 +37,13 @@ export const AmountDetails = styled.div`
     ${({ theme }) => theme.mq.tablet} {
       font-size: ${({ theme }) => theme.font.size.s};
     }
+  }
+`;
+
+export const MaxTransaction = styled.div`
+  margin-bottom: 1rem;
+
+  &:last-child hr {
+    visibility: hidden;
   }
 `;

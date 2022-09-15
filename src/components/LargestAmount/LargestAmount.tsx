@@ -1,5 +1,5 @@
 import React from 'react';
-import { AmountDetails, Wrapper, Title } from './LargestAmount.styles';
+import { AmountDetails, Wrapper, Title, MaxTransaction } from './LargestAmount.styles';
 import { useSelector } from 'react-redux';
 import { State, Transaction } from '../../store';
 import { EURtoPLN } from '../../helpers/eurToPln';
@@ -16,17 +16,26 @@ const LargestAmount = () => {
     })
   );
 
-  const i = transactions.findIndex(x => x.amount == max);
+  const maxArray = transactions.filter(x => x.amount == max);
 
   return (
     <Wrapper>
-      <Title>The largest amount transaction:</Title>
+      <Title>
+        {maxArray.length > 1
+          ? 'The largest amount transactions:'
+          : 'The largest amount transaction:'}
+      </Title>
       <AmountDetails>
         {transactions.length ? (
           <>
-            <p>Title: {transactions[i].title}</p>
-            <p>Amount (EUR): {transactions[i].amount} EUR</p>
-            <p>Amount (PLN): {EURtoPLN(transactions[i].amount, conversionRate)} PLN</p>
+            {maxArray.map(({ id, title, amount }: Transaction) => (
+              <MaxTransaction key={id}>
+                <p>Title: {title}</p>
+                <p>Amount (EUR): {amount} EUR</p>
+                <p>Amount (PLN): {EURtoPLN(amount, conversionRate)} PLN</p>
+                <hr />
+              </MaxTransaction>
+            ))}
           </>
         ) : (
           <p>No transactions added</p>
