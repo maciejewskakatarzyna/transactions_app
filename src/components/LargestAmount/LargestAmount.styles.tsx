@@ -44,6 +44,6 @@ export const MaxTransaction = styled.div`
   margin-bottom: 1rem;
 
   &:last-child hr {
-    visibility: hidden;
+    display: none;
   }
 `;
